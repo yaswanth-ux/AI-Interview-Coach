@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Profile - AI Interview Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #90cdf4;
+    }
+
+    .back-link {
+      color: #fff;
+      text-decoration: none;
+      background-color: #4f46e5;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .back-link:hover {
+      background-color: #3730a3;
+    }
+
+    .profile-container {
+      max-width: 700px;
+      margin: 3rem auto;
+      background-color: #1a1a1a;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .profile-container h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+      color: #90cdf4;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    input {
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2c2c2c;
+      color: white;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      background-color: transparent;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #4f46e5;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #3730a3;
+    }
+
+    .extra-actions {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .extra-actions a {
+      color: #ff8080;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .extra-actions a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AI Interview Coach</h1>
+    <a href="{% url 'mainpage' %}" class="back-link">← Back to Dashboard</a>
+  </header>
+
+  <div class="profile-container">
+    <h2>Your Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="username">Username</label>
+      <input type="text" name="username" value="{{ user.username }}" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" value="{{ user.email }}" required>
+
+      <label for="role">Role</label>
+      <input type="text" name="role" value="{{ user.role|default:'Candidate' }}" readonly>
+
+      <label for="profile_pic">Profile Picture</label>
+      <input type="file" name="profile_pic">
+
+      <button type="submit">💾 Save Changes</button>
+    </form>
+
+    <div class="extra-actions">
+      <a href="{% url 'password_change' %}">🔐 Change Password</a>
+      <a href="{% url 'account_delete' %}">🗑️ Delete Account</a>
+    </div>
+  </div>
+
+</body>
+</html>

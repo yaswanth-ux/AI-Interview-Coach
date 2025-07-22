@@ -1,0 +1,142 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performance Summary</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #20868b;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #1e213a;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            width: 800px;
+            height: auto;
+            box-shadow: 0 0 15px rgba(0,255,255,0.2);
+        }
+        h2 {
+            margin-bottom: 15px;
+            color: #00ffff;
+        }
+        .score {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .suggestion {
+            color: #ffcc00;
+            margin: 15px 0;
+        }
+        .btn {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>📊 Performance Summary</h2>
+        <div class="score">✅ You answered <strong>{{ total }}</strong> questions</div>
+        <div class="score">🏆 Total Score: <strong>{{ score }}</strong></div>
+
+        {% if suggestions %}
+            <div class="suggestion"><strong>Suggestions:</strong>
+                <ul>
+                    {% for s in suggestions %}
+                        <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <a href="/mainpage/" class="btn">Return</a>
+    </div>
+</body>
+</html> -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performance Summary</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #20868b;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #1e213a;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            width: 800px;
+            height: auto;
+            box-shadow: 0 0 15px rgba(0,255,255,0.2);
+        }
+        h2 {
+            margin-bottom: 15px;
+            color: #00ffff;
+        }
+        .score {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .suggestion {
+            color: #ffcc00;
+            margin: 15px 0;
+        }
+        .btn {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>📊 Performance Summary</h2>
+        <div class="score">👤 User: <strong>{{ request.user.username }}</strong></div>
+        <div class="score">✅ Questions Answered: <strong>{{ total }}</strong></div>
+        <div class="score">🏆 Session Score: <strong>{{ score }}</strong></div>
+
+        {% if suggestions %}
+            <div class="suggestion"><strong>Suggestions:</strong>
+                <ul>
+                    {% for s in suggestions %}
+                        <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="suggestion">Great job! No major suggestions.</div>
+        {% endif %}
+
+        <a href="/mainpage/" class="btn">Return to Dashboard</a>
+    </div>
+</body>
+</html>
+

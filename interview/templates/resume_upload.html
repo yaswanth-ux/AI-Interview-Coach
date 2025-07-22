@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Resume</title>
+  <style>
+    body { 
+      background-color: #205a70;
+      background-size: cover;
+      font-family: Arial; 
+      padding: 3rem; 
+    }
+    .container {
+      background: #1e1e1e;
+      max-width: 500px;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    h2 { text-align: center; color: #90cdf4; }
+    input, button {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background-color: #4f46e5;
+      color: white;
+      cursor: pointer;
+    }
+    .success {
+      color: #90ee90;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Upload Resume</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="resume" required />
+      <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded %}
+      <p class="success">{{ message }}</p>
+
+      {% if parsed_data %}
+        <div style="margin-top: 20px; text-align: left;">
+          <h3>Parsed Data:</h3>
+          <p><strong>Skills:</strong> {{ parsed_data.skills|join:", " }}</p>
+          <p><strong>Projects:</strong> {{ parsed_data.projects|join:", " }}</p>
+          <p><strong>Experience:</strong> {{ parsed_data.experience|join:", " }}</p>
+          <p><strong>Education:</strong> {{ parsed_data.education|join:", " }}</p>
+        </div>
+
+         <div style="text-align: center; margin-top: 30px;">
+          <a href="/interview/?round={{ round_type }}&job_role={{ job_role }}">
+            <button>Start Interview</button>
+          </a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</body>
+</html>

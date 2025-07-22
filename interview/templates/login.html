@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | AI Interview Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: url("{% static 'images/bg3.jpg' %}") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #f0f0f0;
+    }
+
+    .login-container {
+      background-color: #1e1e1e;
+      padding: 3rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #00bcd4;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #2c2c2c;
+      color: #f0f0f0;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      padding: 0.8rem;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0097a7;
+    }
+
+    .options {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .options a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    .options a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+      <button type="submit">Log In</button>
+    </form>
+    <div class="options">
+      <!-- <a href="{% url 'password_change' %}">Forgot Password?</a> -->
+      <a href="{% url 'register' %}">Sign Up</a>
+      <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - AI Interview Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      color: #60a5fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section {
+      margin-top: 2rem;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .metric-box {
+      flex: 1;
+      min-width: 200px;
+      background: #334155;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .metric-box h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: #a5b4fc;
+    }
+
+    .progress-bar-container {
+      background: #475569;
+      border-radius: 8px;
+      height: 20px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #38bdf8;
+    }
+
+    .leaderboard-item {
+      padding: 0.8rem;
+      border-bottom: 1px solid #475569;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #fbbf24;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin: 5px;
+      font-weight: bold;
+    }
+
+    canvas {
+      background-color: #1e293b;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, {{ request.user.username }} 👋</h1>
+
+    <div class="section">
+      <h2>Your Interview Status</h2>
+      <div class="metrics">
+        <div class="metric-box">
+          <h3>Job Role</h3>
+          <p>{{ job_role }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Interview Round</h3>
+          <p>{{ round_type }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Answers Given</h3>
+          <p>{{ answer_count }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Progress</h3>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: {{ progress_percent }}%;"></div>
+          </div>
+          <p style="margin-top: 0.5rem;">{{ progress_percent }}%</p>
+        </div>
+        <div class="metric-box">
+          <h3>Total Points</h3>
+          <p>{{ total_points }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Your Rank</h3>
+          <p>#{{ user_rank }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Gamification Badges</h2>
+      {% for badge in badges %}
+        <span class="badge">{{ badge }}</span>
+      {% empty %}
+        <p>No badges yet. Keep practicing!</p>
+      {% endfor %}
+    </div>
+
+    <div class="section">
+      <h2>Score Trend</h2>
+      <canvas id="scoreChart" width="400" height="150"></canvas>
+    </div>
+
+    <div class="section">
+      <h2>Leaderboard 🏆</h2>
+      {% for entry in leaderboard %}
+        <div class="leaderboard-item">
+          <span>{{ entry.username }}</span> <!-- fixed key -->
+          <!-- <span>{{ entry.points }} pts</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: {{ score_labels|safe }},  // Step 5: Data added
+        datasets: [{
+          label: 'Points Over Time',
+          data: {{ score_data|safe }},   // Step 5: Data added
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#fff'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#fff'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html> --> -->
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - AI Interview Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      color: #60a5fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section {
+      margin-top: 2rem;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .metric-box {
+      flex: 1;
+      min-width: 200px;
+      background: #334155;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .metric-box h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: #a5b4fc;
+    }
+
+    .progress-bar-container {
+      background: #475569;
+      border-radius: 8px;
+      height: 20px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #38bdf8;
+    }
+
+    .leaderboard-item {
+      padding: 0.8rem;
+      border-bottom: 1px solid #475569;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #fbbf24;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin: 5px;
+      font-weight: bold;
+    }
+
+    canvas {
+      background-color: #1e293b;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, {{ request.user.username }} 👋</h1>
+
+    <div class="section">
+      <h2>Your Interview Stats</h2>
+      <div class="metrics">
+        <div class="metric-box">
+          <h3>Progress</h3>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: {{ progress_percent }}%;"></div>
+          </div>
+          <p style="margin-top: 0.5rem;">{{ progress_percent }}%</p>
+        </div>
+        <div class="metric-box">
+          <h3>Total Points</h3>
+          <p>{{ total_points }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Your Rank</h3>
+          <p>#{{ user_rank }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Gamification Badges</h2>
+      {% for badge in badges %}
+        <span class="badge">{{ badge }}</span>
+      {% empty %}
+        <p>No badges yet. Keep practicing!</p>
+      {% endfor %}
+    </div>
+
+    <div class="section">
+      <h2>Score Trend</h2>
+      <canvas id="scoreChart" width="400" height="150"></canvas>
+    </div>
+
+    <div class="section">
+      <h2>Leaderboard 🏆</h2>
+      {% for entry in leaderboard %}
+        <div class="leaderboard-item">
+          <span>{{ entry.username }}</span>
+          <span>{{ entry.points }} pts</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: {{ score_labels|safe }},
+        datasets: [{
+          label: 'Points Over Time',
+          data: {{ score_data|safe }},
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#fff'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#fff'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

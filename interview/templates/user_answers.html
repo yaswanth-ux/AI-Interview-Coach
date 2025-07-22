@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Answers</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+    }
+    .answer-box {
+      background-color: #1e293b;
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+    h2 {
+      color: #60a5fa;
+    }
+    .feedback {
+      color: #facc15;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Submitted Answers</h1>
+  {% for item in answers %}
+    <div class="answer-box">
+      <h3>Q{{ forloop.counter }}. {{ item.question }}</h3>
+      <p><strong>Your Answer:</strong> {{ item.answer }}</p>
+      <p class="feedback"><strong>AI Feedback:</strong> {{ item.feedback }}</p>
+      <p><strong>Score:</strong> {{ item.score }}/10</p>
+    </div>
+  {% empty %}
+    <p>No answers submitted yet.</p>
+  {% endfor %}
+</body>
+</html>

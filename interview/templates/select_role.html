@@ -1,0 +1,268 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Select Role & Round</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+      color: white;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      font-weight: 500;
+    }
+
+    select {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background-color: #2c2c2c;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+      background-color: #6366f1;
+      color: white;
+      font-weight: bold;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4f46e5;
+    }
+  </style>
+  <style>
+  .upload-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s;
+  }
+
+  .upload-btn:hover {
+    background-color: #4f46e5;
+  }
+</style>
+
+</head>
+<body>
+  <div class="card">
+    <h2>Start Your Mock Interview</h2>
+
+    <label for="job-role">Select Job Role:</label>
+    <select id="job-role">
+      <option value="Cloud Engineer">Cloud Engineer</option>
+      <option value="AI/ML Engineer">AI/ML Engineer</option>
+      <option value="Full Stack Developer">Full Stack Developer</option>
+      <option value="Back-End Developer">Back-End Developer</option>
+      <option value="Front-End Developer">Front-End Developer</option>
+      <option value="Data Analyst">Data Analyst</option>
+    </select>
+
+    <label for="round-type">Select Round:</label>
+    <select id="round-type">
+      <option value="technical">Technical</option>
+      <option value="hr">HR</option>
+      <option value="managerial">Managerial</option>
+    </select>
+
+    <a href="/api/resume/upload/html/" class="upload-btn">Upload Resume</a>
+  </div>
+  <script>
+  function startInterview() {
+    const jobRole = document.getElementById("job-role").value;
+    const round = document.getElementById("round-type").value;
+
+    if (!jobRole || !round) {
+      alert("Please select both job role and round.");
+      return;
+    }
+
+    const encodedJobRole = encodeURIComponent(jobRole);
+    const encodedRound = encodeURIComponent(round);
+
+    window.location.href = `/interview/?round=${encodedRound}&job_role=${encodedjobrole}`;
+  }
+</script>
+
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Role & Round</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+      color: white;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      font-weight: 500;
+    }
+
+    select {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background-color: #2c2c2c;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      border-radius: 10px;
+      background-color: #6366f1;
+      color: white;
+      font-weight: bold;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4f46e5;
+    }
+
+    .upload-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem;
+      background-color: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s;
+    }
+
+    .upload-btn:hover {
+      background-color: #4f46e5;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Start Your Mock Interview</h2>
+
+    <label for="job-role">Select Job Role:</label>
+    <select id="job-role">
+      <option value="Cloud Engineer">Cloud Engineer</option>
+      <option value="AI/ML Engineer">AI/ML Engineer</option>
+      <option value="Full Stack Developer">Full Stack Developer</option>
+      <option value="Back-End Developer">Back-End Developer</option>
+      <option value="Front-End Developer">Front-End Developer</option>
+      <option value="Data Analyst">Data Analyst</option>
+    </select>
+
+    <label for="round-type">Select Round:</label>
+    <select id="round-type">
+      <option value="technical">Technical</option>
+      <option value="hr">HR</option>
+      <option value="managerial">Managerial</option>
+    </select>
+
+    <!-- <button onclick="startInterview()">Start Interview</button> -->
+    <a href="/api/resume/upload/html/" class="upload-btn">Upload Resume</a>
+  </div>
+
+  <script>
+    function startInterview() {
+      const jobRole = document.getElementById("job-role").value;
+      const round = document.getElementById("round-type").value;
+
+      if (!jobRole || !round) {
+        alert("Please select both job role and round.");
+        return;
+      }
+
+      // const encodedJobRole = encodeURIComponent(jobRole);
+      // const encodedRound = encodeURIComponent(round);
+
+      window.location.href = `/interview/?round=${encodedRound}&job_role=${encodedJobRole}`;
+    }
+  </script>
+</body>
+</html>

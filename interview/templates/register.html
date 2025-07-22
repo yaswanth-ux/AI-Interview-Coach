@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - AI Interview Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url("{% static 'images/bg2.jpg' %}") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    .register-container {
+      background-color: #1a1a1a;
+      padding: 3rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 480px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #4f46e5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    input, select {
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #2c2c2c;
+      color: #f0f0f0;
+      font-size: 1rem;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    .errorlist {
+      color: #f44336;
+      font-size: 0.9rem;
+      margin: -0.5rem 0 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    button {
+      padding: 0.9rem;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3730a3;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .login-link a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h1>Create Account</h1>
+
+    <form method="POST" action="{% url 'register' %}">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+          <ul class="errorlist">
+            {% for error in field.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="login-link">
+      Already have an account? <a href="{% url 'login' %}">Login</a>
+    </div>
+  </div>
+</body>
+</html>

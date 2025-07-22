@@ -1,0 +1,273 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Interview Portal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0c0c0c;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .header {
+      position: fixed;
+      top: 20px;
+      right: 40px;
+      z-index: 2;
+    }
+
+    .header a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .header a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .landing {
+      background-image: url("{% static 'images/bg.jpg' %}");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+    }
+
+    .landing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.65);
+    }
+
+    .landing-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .landing-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .animated-line {
+      display: inline-block;
+      font-size: 20px;
+      color: #dddddd;
+      margin-bottom: 40px;
+      line-height: 1.5;
+      word-spacing: 4px;
+    }
+
+    .animated-line span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: fadeInLeft 0.5s forwards;
+    }
+
+    .animated-line span.space {
+      width: 8px;
+    }
+
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .landing-content a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 32px;
+      background-color: #4f46e5;
+      color: white;
+      font-size: 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .landing-content a:hover {
+      background-color: #3730a3;
+    }
+
+    /* About Section */
+    #about {
+      background-color: #111;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 80px 40px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-text {
+      flex: 1 1 400px;
+      padding: 20px;
+    }
+
+    .about-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #4f46e5;
+    }
+
+    .about-text p {
+      font-size: 18px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+
+    .about-image img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: #0c0c0c;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #4f46e5;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    .contact-details strong {
+      color: #60a5fa;
+    }
+
+    @media (min-width: 768px) {
+      .contact-details {
+        flex-direction: row;
+        justify-content: center;
+        gap: 60px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .landing-content h1 {
+        font-size: 32px;
+      }
+
+      .animated-line {
+        font-size: 16px;
+      }
+
+      .landing-content a {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+
+      .about-text h2 {
+        font-size: 28px;
+      }
+
+      .about-text p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Signup</a>
+  </div>
+
+  <!-- Landing Section -->
+  <section class="landing">
+    <div class="landing-content">
+      <h1>Get Interview-Ready with AI</h1>
+      <div class="animated-line" id="animatedText"></div>
+      <a href="{% url 'login' %}" id="getStartedBtn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        AI Interview is a smart preparation tool offering real-time mock interviews,
+        personalized feedback, skill analysis, and resume review — all powered by AI.
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="{% static 'images/bg.jpg' %}" alt="About Us Image">
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-details">
+      <div><strong>Email:</strong> support@aiinterview.com</div>
+      <div><strong>Phone:</strong> +91 98765 43210</div>
+      <div><strong>Address:</strong> Hyderabad, Telangana, India</div>
+    </div>
+  </section>
+
+  <!-- JS for animated text -->
+  <script>
+    const targetText = "Practice real-world interview questions, receive instant AI feedback, and boost your confidence — all in one place.";
+    const container = document.getElementById("animatedText");
+
+    [...targetText].forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.animationDelay = `${i * 0.03}s`;
+      if (char === ' ') {
+        span.classList.add("space");
+      }
+      container.appendChild(span);
+    });
+  </script>
+
+</body>
+</html>
